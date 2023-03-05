@@ -21,35 +21,42 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Docker Container Based Laravel
+Sample Project: Realtime chat application built with Laravel WebSockets.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This docker build can be used to run all your Laravel Projects. Our implementation will include 6 containers:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+PHP
+WebSockets
+Database
+Redis
+Queue
+Node
+If your not using WebSockets, Redis or Queue, simply comment them out inside your docker-compose.yml file.
 
-## Laravel Sponsors
+## Docker Important Command
+- docker ps :: to check gloablly container status
+- docker-compose ps :: to check dir based container status
+- docker-compose up :: deploy the server
+- docker-compose down :: down the server after each changes
+- docker-compose up --build :: deploy and build the server
+- docker-compose up -d :: hide the terminal command
+- docker exec <container name> <command> :: Examplae: docker exec dockerise-app-php-1 php artisan migrate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## check container logs
+- docker logs -f <container name>
+- docker logs -f mysql
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## start docker container
+- docker start <Container name> <container name>
+- docker start eventgenerator flink-taskmanager flink-jobmanager
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## stop docker container
+- docker stop <Container name> <container name>
+- docker stop eventgenerator
+
 
 ## Code of Conduct
 
